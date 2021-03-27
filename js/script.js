@@ -79,7 +79,7 @@ const Main=()=>{
 
                             document.getElementById("loading").className="load-show";       //Triggers the loading screen
 
-                            let url="http://newsapi.org/v2/everything?q="+search+"&language="+language+"&page="+page+"&pageSize="+pageSize+"&apiKey=840369e692f4458f8c10d87b7dd2d783";
+                            let url="https://newsapi.org/v2/everything?q="+search+"&language="+language+"&page="+page+"&pageSize="+pageSize+"&apiKey=840369e692f4458f8c10d87b7dd2d783";
 
                             var file = new XMLHttpRequest();
                             file.open("GET", url, true);
