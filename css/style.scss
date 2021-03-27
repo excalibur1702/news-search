@@ -66,6 +66,7 @@ header{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     background-color: $search-area;
     text-align: center;
@@ -76,6 +77,14 @@ header{
         font-family: inherit;
         transition: all 0.2s ease;
     }
+}
+#api-bar-label{
+    display: block;
+    width: 100%;
+}
+#api-bar{
+    width: 200px;
+    margin-left: 20px;
 }
 #slider {
     display: block;
@@ -205,6 +214,10 @@ header{
             width: auto;
             margin: 10px 0;
         }
+    }
+    #api-bar{
+        display: block;
+        width: 200px;
     }
     #results-area{
         padding: 0;

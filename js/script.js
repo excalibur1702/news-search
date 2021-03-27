@@ -59,14 +59,15 @@ const PageNumbers=({setPage, refresh, page, pageSize, total})=>{
 
 const Main=()=>{
 
-    const [search, setSearch]=React.useState("");           //Contents of the search bar
-    const [loading, setLoading]=React.useState(false);      //Trigger for the loading screen
-    const [trig, setTrig]=React.useState(false);            //Trigger for fetching data from the API
-    const [page, setPage]=React.useState(1);                //Current results page
-    const [pageSize, setPageSize]=React.useState(15);       //Page size input
-    const [currSize, setCurrSize]=React.useState(15);       //Page size used to fetch data
-    const [language, setLanguage]=React.useState("");       //Language input
-    const [data, setData]=React.useState("");               //Data fetched from the API
+    const [search, setSearch]=React.useState("");                                   //Contents of the search bar
+    const [loading, setLoading]=React.useState(false);                              //Trigger for the loading screen
+    const [trig, setTrig]=React.useState(false);                                    //Trigger for fetching data from the API
+    const [page, setPage]=React.useState(1);                                        //Current results page
+    const [pageSize, setPageSize]=React.useState(15);                               //Page size input
+    const [currSize, setCurrSize]=React.useState(15);                               //Page size used to fetch data
+    const [language, setLanguage]=React.useState("");                               //Language input
+    const [apikey, setApikey]=React.useState("840369e692f4458f8c10d87b7dd2d783")    //API key required for fetching data
+    const [data, setData]=React.useState("");                                       //Data fetched from the API
 
     React.useEffect(()=>{
 
@@ -79,7 +80,7 @@ const Main=()=>{
 
                             document.getElementById("loading").className="load-show";       //Triggers the loading screen
 
-                            let url="http://newsapi.org/v2/everything?q="+search+"&language="+language+"&page="+page+"&pageSize="+pageSize+"&apiKey=840369e692f4458f8c10d87b7dd2d783";
+                            let url="https://newsapi.org/v2/everything?q="+search+"&language="+language+"&page="+page+"&pageSize="+pageSize+"&apiKey="+apikey;
 
                             var file = new XMLHttpRequest();
                             file.open("GET", url, true);
@@ -137,6 +138,10 @@ const Main=()=>{
     return(
         <div id="main">
             <div id="search-area">
+                <label id="api-bar-label">
+                    Enter API Key:
+                    <input type="text" id="api-bar" value={apikey} onChange={(e)=>{setApikey(e.target.value)}}></input>
+                </label>
                 <input type="text" id="search-bar" placeholder="Search" onChange={(e)=>{setSearch(e.target.value)}}></input>
                 <select id="language" defaultValue="All Languages" onChange={(e)=>{setLanguage(langList[langNames.indexOf(event.target.value)])}}>
                     {langNames.map(x=><option key={x}>{x}</option>)}
